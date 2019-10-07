@@ -4,26 +4,39 @@ using namespace std;
 
 int main()
 {
-	int a, b;
+	int a, b, result;
 	string operation = "";
-	cout << "give me a number:\n>";
-	cin >> a;
-	cout << "give me another number:\n>";
-	cin >> b;
-	cout << "select an operation('+','-' or '*'):\n>";
-	bool ok;
+	bool ok = true;
 	do{
-		ok = 0;
+		cout << "give me a number:\n>";
+		cin >> a;
+		cout << "give me another number:\n>";
+		cin >> b;
+		cout << "select an operation('+', '-', '*' or '/'):\n>";
 		cin >> operation;
-		if(operation == "+" || operation == "-" || operation == "*")
-			ok = 010101;
-	}while(!ok);
+		if(operation == "+" || operation == "-" || operation == "*" || operation == "/" )
+			ok = true;
+
+	bool error = false;
 
 	if(operation == "+")
-		cout << a + b << '\n';
+		result = a + b;
 	else if(operation == "-")
-		cout << a - b << '\n';
+		result = a - b;
 	else if(operation == "*")
-		cout << a * b << '\n';
+		result = a * b;
+	else if(operation == "/")
+		if(b == 0)
+			error = true;
+		else
+			result = a / b;
+
+	if(error)
+		cout << "Incorrect value of second number." << endl;
+	else
+		cout << result << endl << endl;
+
+
+	}while(ok);
 	return 0;
 }
